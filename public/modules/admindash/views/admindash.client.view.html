@@ -1,0 +1,41 @@
+<div ng-controller="AdmindashController">
+
+	<div class="row adminDash" ng-repeat="content in adminpageContent">
+
+
+
+		<nav class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li><a href="{{content.sbnav1url}}">{{content.sbnav1}}</a></li>
+				<li><a href="{{content.sbnav2url}}">{{content.sbnav2}}</a></li>
+				<li><a href="{{content.sbnav3url}}">{{content.sbnav3}}</a></li>
+				<li><a href="{{content.sbnav4url}}">{{content.sbnav4}}</a></li>
+			</ul>
+		</nav>
+		<section class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" >
+			<h1 class="page-header">{{content.pageTitle}}</h1>
+			<div class="row">
+				<div class="col-xs-6 col-sm-3">
+					<h4>{{content.secATitle}}</h4>
+					<span class="text-muted">{{content.secADesc}}</span>
+				</div>
+				<div class="col-xs-6 col-sm-3">
+					<h4>{{content.secBTitle}}</h4>
+					<span class="text-muted">{{content.secBDesc}}</span>
+				</div>
+				<div class="col-xs-6 col-sm-3">
+					<h4>{{content.secCTitle}}</h4>
+					<span class="text-muted">{{content.secCDesc}}</span>
+				</div>
+				<div class="col-xs-6 col-sm-3">
+					<h4>{{content.secDTitle}}</h4>
+					<span class="text-muted">{{content.secDDesc}}</span>
+				</div>
+			</div>
+		</section>
+
+
+	</div>
+
+
+</div>

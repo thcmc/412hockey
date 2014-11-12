@@ -1,0 +1,28 @@
+.playerdashWrapper {
+	display:table;
+    width: 100%;
+    margin-top: 10px;
+    padding: 50px 0 0 0; /*set left/right padding according to needs*/
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.playerMainWrap {
+	height: 100%;
+    display: table-cell;
+}
+.playerNavTop, .playerMainAside, .playerMainContent, .playerSecondAside {
+	float: none;
+}
+.playerMainAside {
+	display: table-cell;
+    background: whitesmoke;
+    padding: 10px;
+    border-top: 1px solid #5386FD;
+}
+.playerMainContent {
+	display: table-cell;
+    background: white;
+  	float: none;
+  	padding: 10px;
+  	border-top: 1px solid #5386FD;
+}

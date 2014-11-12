@@ -1,0 +1,273 @@
+<section class="row" data-ng-controller="GoalieGameSelfEvalsController" style="margin-top: 40px;">
+
+    <div class="col-md-8">
+        <div class="page-header">
+            <h1>New Goalie game self eval</h1>
+        </div>
+        <div class="col-md-12">
+            <form class="form-inline" role="form" data-ng-submit="create()" novalidate>
+                <fieldset>
+
+                    <div class="form-group">
+                        <label class="control-label" for="name">Evaluation Description</label>
+                        <div class="controls">
+                            <textarea type="text" data-ng-model="name" id="name" class="form-control" placeholder="showcase game, league game, etc." ></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="opponent">Opponent</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="opponent" id="opponent" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="location">Location</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="location" id="location" class="form-control" placeholder="rink, city, etc." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="name">Game Date</label>
+                        <div class="controls">
+                            <p class="input-group">
+                                <input type="text" datepicker-popup="{{format}}" data-ng-model="when" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" id="when" class="form-control" required>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-group radio">
+                         <div class="radio">
+                            <label>
+                                <input type="radio" name="win" value="win" ng-model="winloss"> Win&nbsp;
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input  type="radio" name="loss" value="loss" ng-model="winloss"> Loss&nbsp;
+                            </label>
+                        </div>
+                    </div>
+
+                    <hr>
+        
+                    <div class="form-group">
+                        <label class="control-label" for="myrating">Rate Your Overall Performance<br>(1 = bad)</label>
+                        <div class="controls">
+                            <rating ng-model="myrating" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+                            <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+                        </div>
+                    </div>
+
+                <hr>
+
+                    <h2>Goals Against | Shots</h2>
+                    <div class="form-group">
+                        <label class="control-label" for="gaa">GA</label>
+                        <div class="controls">
+                            <input type="number" min="0" max="10" data-ng-model="gaa" id="gaa" class="form-control" placeholder="#" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="shots">Shots</label>
+                        <div class="controls">
+                            <input type="number" min="0" max="72" data-ng-model="shots" id="shots" class="form-control" placeholder="#" required>
+                        </div>
+                    </div>
+
+    <hr>
+
+                    <h2>Goals Against | Descriptions, Corrections &amp; Improvements<br><small><i>First Select The Number of Goals Against Above.</i></small></h2>
+                    <div ng-show="gaa == '1' || gaa == '2' || gaa == '3' || gaa == '4' || gaa == '5' || gaa == '6' || gaa == '7'">
+                        <div class="form-group">
+                            <label class="control-label" for="ga1">1st Goal</label>
+                            <div class="controls">
+                                <textarea type="text" data-ng-model="ga1" id="ga1" class="form-control" placeholder="describe goal" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ga1rating">Rate Yourself on the Goal<br>(1 = bad)</label>
+                            <div class="controls">
+                                <rating ng-model="ga1rating" max="max" readonly="isReadonly" on-hover="hoveringOver1(value)" on-leave="overStar1 = null"></rating>
+                                <span class="label" ng-class="{'label-warning': percent1<30, 'label-info': percent1>=30 && percent1<70, 'label-success': percent1>=70}" ng-show="overStar1 && !isReadonly">{{percent1}}%</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ga1fix">Improvement / Fix</label>
+                            <div class="controls">
+                                <textarea type="text" data-ng-model="ga1fix" id="ga1fix" class="form-control" placeholder="describe improvement" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+    <hr><!-- next goal -->
+                    <div ng-show="gaa == '2' || gaa == '3' || gaa == '4' || gaa == '5' || gaa == '6' || gaa == '7'">
+                        <div class="form-group">
+                            <label class="control-label" for="ga2">2nd Goal</label>
+                            <div class="controls">
+                                <textarea type="text" data-ng-model="ga2" id="ga2" class="form-control" placeholder="describe goal" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ga2rating">Rate Yourself on the Goal<br>(1 = bad)</label>
+                            <div class="controls">
+                                <rating ng-model="ga2rating" max="max" readonly="isReadonly" on-hover="hoveringOver2(value)" on-leave="overStar2 = null"></rating>
+                                <span class="label" ng-class="{'label-warning': percent2<30, 'label-info': percent2>=30 && percent2<70, 'label-success': percent2>=70}" ng-show="overStar2 && !isReadonly">{{percent2}}%</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ga2fix">Improvement / Fix</label>
+                            <div class="controls">
+                                <textarea type="text" data-ng-model="ga2fix" id="ga2fix" class="form-control" placeholder="describe improvement" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+    <hr><!-- next goal -->
+                    <div ng-show="gaa == '3' || gaa == '4' || gaa == '5' || gaa == '6' || gaa == '7'">
+                        <div class="form-group">
+                            <label class="control-label" for="ga3">3rd Goal</label>
+                            <div class="controls">
+                                <textarea type="text" data-ng-model="ga3" id="ga3" class="form-control" placeholder="describe goal" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ga3rating">Rate Yourself on the Goal<br>(1 = bad)</label>
+                            <div class="controls">
+                                <rating ng-model="ga3rating" max="max" readonly="isReadonly" on-hover="hoveringOver3(value)" on-leave="overStar3 = null"></rating>
+                                <span class="label" ng-class="{'label-warning': percent3<30, 'label-info': percent3>=30 && percent3<70, 'label-success': percent3>=70}" ng-show="overStar3 && !isReadonly">{{percent3}}%</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ga3fix">Improvement / Fix</label>
+                            <div class="controls">
+                                <textarea type="text" data-ng-model="ga3fix" id="ga3fix" class="form-control" placeholder="describe improvement" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+    <hr><!-- next goal -->
+                    <div ng-show="gaa == '4' || gaa == '5' || gaa == '6' || gaa == '7'">
+                        <div class="form-group">
+                            <label class="control-label" for="ga4">4th Goal</label>
+                            <div class="controls">
+                                <textarea type="text" data-ng-model="ga4" id="ga4" class="form-control" placeholder="describe goal" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ga4rating">Rate Yourself on the Goal<br>(1 = bad)</label>
+                            <div class="controls">
+                                <rating ng-model="ga4rating" max="max" readonly="isReadonly" on-hover="hoveringOver4(value)" on-leave="overStar4 = null"></rating>
+                                <span class="label" ng-class="{'label-warning': percent4<30, 'label-info': percent4>=30 && percent4<70, 'label-success': percent4>=70}" ng-show="overStar4 && !isReadonly">{{percent4}}%</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ga4fix">Improvement / Fix</label>
+                            <div class="controls">
+                                <textarea type="text" data-ng-model="ga4fix" id="ga4fix" class="form-control" placeholder="describe improvement" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+    <hr><!-- next goal -->
+                    <div ng-show="gaa == '5' || gaa == '6' || gaa == '7'">
+                        <div class="form-group">
+                            <label class="control-label" for="ga5">5th Goal</label>
+                            <div class="controls">
+                                <textarea type="text" data-ng-model="ga5" id="ga5" class="form-control" placeholder="describe goal" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ga5rating">Rate Yourself on the Goal<br>(1 = bad)</label>
+                            <div class="controls">
+                                <rating ng-model="ga5rating" max="max" readonly="isReadonly" on-hover="hoveringOver5(value)" on-leave="overStar5 = null"></rating>
+                                <span class="label" ng-class="{'label-warning': percent5<30, 'label-info': percent5>=30 && percent5<70, 'label-success': percent5>=70}" ng-show="overStar5 && !isReadonly">{{percent5}}%</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ga5fix">Improvement / Fix</label>
+                            <div class="controls">
+                                <textarea type="text" data-ng-model="ga5fix" id="ga5fix" class="form-control" placeholder="describe improvement" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+    <hr><!-- next goal -->
+                    <div ng-show="gaa == '6' || gaa == '7'">
+                        <div class="form-group">
+                            <label class="control-label" for="ga6">6th Goal</label>
+                            <div class="controls">
+                                <textarea type="text" data-ng-model="ga6" id="ga6" class="form-control" placeholder="describe goal" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ga6rating">Rate Yourself on the Goal<br>(1 = bad)</label>
+                            <div class="controls">
+                                <rating ng-model="ga6rating" max="max" readonly="isReadonly" on-hover="hoveringOver6(value)" on-leave="overStar6 = null"></rating>
+                                <span class="label" ng-class="{'label-warning': percent6<30, 'label-info': percent6>=30 && percent6<70, 'label-success': percent6>=70}" ng-show="overStar6 && !isReadonly">{{percent6}}%</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ga6fix">Improvement / Fix</label>
+                            <div class="controls">
+                                <textarea type="text" data-ng-model="ga6fix" id="ga6fix" class="form-control" placeholder="describe improvement" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+    <hr><!-- next goal -->
+                    <div ng-show="gaa == '7'">
+                        <div class="form-group">
+                            <label class="control-label" for="ga7">7th Goal</label>
+                            <div class="controls">
+                                <textarea type="text" data-ng-model="ga7" id="ga7" class="form-control" placeholder="describe goal" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ga7rating">Rate Yourself on the Goal<br>(1 = bad)</label>
+                            <div class="controls">
+                                <rating ng-model="ga7rating" max="max" readonly="isReadonly" on-hover="hoveringOver7(value)" on-leave="overStar7 = null"></rating>
+                                <span class="label" ng-class="{'label-warning': percent7<30, 'label-info': percent7>=30 && percent7<70, 'label-success': percent7>=70}" ng-show="overStar7 && !isReadonly">{{percent7}}%</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ga7fix">Improvement / Fix</label>
+                            <div class="controls">
+                                <textarea type="text" data-ng-model="ga7fix" id="ga7fix" class="form-control" placeholder="describe improvement" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="toworkon">Things to Work On</label>
+                        <div class="controls" >
+                            <textarea width="100%" type="text" data-ng-model="toworkon" id="toworkon" class="form-control" placeholder="describe what you need to improve upon." required></textarea>
+                        </div>
+                    </div>
+
+    <br>
+    <br>
+
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-default">
+                    </div>
+    				<div data-ng-show="error" class="text-danger">
+    					<strong data-ng-bind="error"></strong>
+    				</div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <aside>
+            <h4>Tips to Write a Good Self Evaluation</h4>
+            <ul>
+                <li>Be concise - To The Point.</li>
+                <li>Describe What Happened <br><small> Your Positioning? | How did the Play occur/develop? | What was your Reaction?</small></li>
+                <li>How did the Goal go in?<br><small>On the ice under pad |  Over Glove-side Shoulder | Etc.</small></li>
+            </ul>
+        </aside>
+        
+    </div>
+</section>

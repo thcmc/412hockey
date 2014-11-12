@@ -1,0 +1,153 @@
+<div ng-controller="HomeController">
+<!-- SVG DETAILS -->
+	<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'>
+		<rect width='8' height='8' fill='#403c3f'/>
+		<path d='M0 0L8 8ZM8 0L0 8Z' stroke-width='1' stroke='#1e292d'/>
+	</svg>
+
+	<!-- SVG OUTPUT (BACKGROUND PATTERN) -->
+	<div id="demo">
+
+
+<section class="row mainWrapper mwTop" data-ng-controller="SettingsController" style="margin-top: 100px;">
+	<h3 class="col-md-12 text-center">Profile <br><i>Click on Field to Edit Information</i></h3>
+	<div class="col-md-12">  <!-- col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2 -->
+		<form ng-show="editing" ng-submit="editing = false" name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" class="signin form-horizontal" autocomplete="off">
+			<fieldset>	
+
+
+				<table class="table">
+					<tbody>
+						<tr><td>FirstName</td>
+							<td><input type="text" id="firstName" name="firstName" class="form-control" data-ng-model="user.firstName" placeholder="First Name"></td>
+						</tr>
+						<tr><td>LastName</td>
+							<td><input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="user.lastName" placeholder="Last Name"></td>
+						</tr>
+						<tr><td>Email</td>
+							<td><input type="email" id="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email"></td>
+						</tr>
+						<tr><td>Username</td>
+							<td><input type="text" id="username" name="username" class="form-control" data-ng-model="user.username" placeholder="Username"></td>
+						</tr>
+						<tr><td>Role</td>
+							<td><input type="text" id="roles" name="roles" class="form-control" data-ng-model="user.roles" placeholder="Role"></td>
+						</tr>
+						<tr><td>Position</td>
+							<td><input type="position" id="position" name="position" class="form-control" data-ng-model="user.position" placeholder="Position"></td>
+						</tr>
+						<tr><td>Birthdate</td>
+							<td><input type="birthdate" id="birthdate" name="birthdate" class="form-control" data-ng-model="user.birthdate" placeholder="Birthdate"></td>
+						</tr>
+						<tr><td>Birthplace</td>
+							<td><input type="birthplace" id="birthplace" name="birthplace" class="form-control" data-ng-model="user.birthplace" placeholder="Birthplace"></td>
+						</tr>
+						<tr><td>Height</td>
+							<td><input type="height" id="height" name="height" class="form-control" data-ng-model="user.height" placeholder="Height"></td>
+						</tr>
+						<tr><td>Weight</td>
+							<td><input type="weight" id="weight" name="weight" class="form-control" data-ng-model="user.weight" placeholder="Weight"></td>
+						</tr>
+						<tr><td>Shoots</td>
+							<td><input type="shoots" id="shoots" name="shoots" class="form-control" data-ng-model="user.shoots" placeholder="Shoots"></td>
+						</tr>
+
+					</tbody>
+				</table>
+
+<!-- 				<div class="col-md-5">
+
+					<div class="form-group ">
+						<label for="firstName">First Name</label>
+						<input type="text" id="firstName" name="firstName" class="form-control" data-ng-model="user.firstName" placeholder="First Name">
+					</div>
+
+					<div class="form-group ">
+						<label for="lastName">Last Name</label>
+						<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="user.lastName" placeholder="Last Name">
+					</div>
+
+					<div class="form-group ">
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email">
+					</div>
+
+					<div class="form-group ">
+						<label for="username">Username</label>
+						<input type="text" id="username" name="username" class="form-control" data-ng-model="user.username" placeholder="Username">
+					</div>
+
+				</div>
+
+				<div class="col-md-5">
+					<div class="form-group">
+						<label for="position">Position</label>
+						<input type="position" id="position" name="position" class="form-control" data-ng-model="user.position" placeholder="Position">
+					</div>
+					<div class="form-group">
+						<label for="birthdate">Birthdate</label>
+						<input type="birthdate" id="birthdate" name="birthdate" class="form-control" data-ng-model="user.birthdate" placeholder="Birthdate">
+					</div>
+					<div class="form-group">
+						<label for="birthplace">Birthplace</label>
+						<input type="birthplace" id="birthplace" name="birthplace" class="form-control" data-ng-model="user.birthplace" placeholder="Birthplace">
+					</div>
+					<div class="form-group">
+						<label for="height">Height</label>
+						<input type="height" id="height" name="height" class="form-control" data-ng-model="user.height" placeholder="Height">
+					</div>
+					<div class="form-group">
+						<label for="weight">Weight</label>
+						<input type="weight" id="weight" name="weight" class="form-control" data-ng-model="user.weight" placeholder="Weight">
+					</div>
+					<div class="form-group">
+						<label for="shoots">shoots</label>
+						<input type="shoots" id="shoots" name="shoots" class="form-control" data-ng-model="user.shoots" placeholder="Shoots">
+					</div>
+				</div> -->
+
+				<div class="col-md-12">
+
+
+					<div class="text-center form-group">
+						<button type="submit" class="btn btn-large btn-primary">Save Profile</button>
+					</div>
+
+					<div data-ng-show="success" class="text-center text-success">
+						<strong>Profile Saved Successfully</strong>
+					</div>
+
+					<div data-ng-show="error" class="text-center text-danger">
+						<strong data-ng-bind="error"></strong>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+	</div>
+	<div class="col-md-6">
+		<div ng-hide="editing" ng-click="editing = true" style="color: white; margin: 30px;">
+ 			<!-- <img src="http://placehold.it/180x180" style="position: absolute; z-index: 1; top:60%px; left: 90%;"> -->
+			<table class="table">
+				<tbody>
+					<tr><td>FirstName</td><td>{{user.firstName}}</td></tr>
+					<tr><td>LastName</td><td>{{user.lastName}}</td></tr>
+					<tr><td>Email</td><td>{{user.email}}</td></tr>
+					<tr><td>Username</td><td>{{user.username}}</td></tr>
+					<tr><td>Role</td><td>{{user.roles}}</td></tr>
+					<tr><td>Position</td><td>{{user.position}}</td></tr>
+					<tr><td>Birthdate</td><td>{{user.birthdate}}</td></tr>
+					<tr><td>Birthplace</td><td>{{user.birthplace}}</td></tr>
+					<tr><td>Height</td><td>{{user.height}}</td></tr>
+					<tr><td>Weight</td><td>{{user.weight}}</td></tr>
+					<tr><td>Shoots</td><td>{{user.shoots}}</td></tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+
+
+</section>
+</div>
+</div>

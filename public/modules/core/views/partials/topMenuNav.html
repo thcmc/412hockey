@@ -1,0 +1,64 @@
+<div ng-controller="HomeController">
+
+
+	<!-- <div class="col-md-1 insideWrap2" >
+	<i style="margin: 2px;">Quick Links:</i>
+	</div> -->
+
+	
+	<div>
+		<div class="col-md-1 insideWrap2" data-ng-show="authentication.user.roles.indexOf('player') > -1">  <!-- data-ng-if="menu.shouldRenderPlayer(authentication.user);" -->
+			<span class="dropdown" on-toggle="toggled(open)">
+		      <a ui-sref="playerdash" class="dropdown-toggle"><i class=""></i>PLAYER</a>
+		      <ul class="dropdown-menu">
+		        <li ng-repeat="choice in playerChoices"><a href="#!{{choice.url}}">{{choice.name}}</a></li>
+		      </ul>
+		    </span>
+		</div>
+
+		<div class="col-md-1 insideWrap2" data-ng-show="authentication.user.roles.indexOf('goalie') > -1">
+			<span class="dropdown" on-toggle="toggled(open)">
+		      <a ui-sref="goaliedash" class="dropdown-toggle"><i class=""></i>GOALIE</a>
+		     <ul class="dropdown-menu">
+		        <li ng-repeat="choice in goalieChoices"><a href="#!{{choice.url}}">{{choice.name}}</a></li>
+		      </ul>
+		    </span>
+		</div>
+
+		<div class="col-md-1 insideWrap2" data-ng-show="authentication.user.roles.indexOf('coach') > -1">
+			<span class="dropdown" on-toggle="toggled(open)">
+		      <a ui-sref="coachdash" class="dropdown-toggle"><i class=""></i>COACH</a>
+		      <ul class="dropdown-menu">
+		        <li ng-repeat="choice in coachChoices"><a href="#!{{choice.url}}">{{choice.name}}</a></li>
+		      </ul>
+		    </span>
+		</div>
+		<div class="col-md-1 insideWrap2" data-ng-show="authentication.user.roles.indexOf('user') > -1">
+		      <a ui-sref="admindash">Admin Dashboard</a>
+		</div>
+		
+	</div>
+
+
+
+<!-- 
+	<div class="col-md-1 insideWrap2">
+		<span class="dropdown" on-toggle="toggled(open)">
+	      <a href class="dropdown-toggle"><i class=""></i>Instructor</a>
+	      <ul class="dropdown-menu">
+	        <li ng-repeat="choice in instructorChoices"><a href="{{choice.url}}">{{choice.name}}</a></li>
+	      </ul>
+	    </span>
+	</div>
+
+	<div class="col-md-1 insideWrap2">
+		<span class="dropdown" on-toggle="toggled(open)">
+	      <a href class="dropdown-toggle"><i class=""></i>Parent</a>
+	      <ul class="dropdown-menu">
+	        <li ng-repeat="choice in parentChoices"><a href="{{choice.url}}">{{choice.name}}</a></li>
+	      </ul>
+	    </span>
+	</div> -->
+
+
+</div>

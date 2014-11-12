@@ -1,0 +1,238 @@
+<div ng-controller="HomeController">
+	
+	<!-- SVG DETAILS -->
+	<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'>
+		<rect width='8' height='8' fill='#403c3f'/>
+		<path d='M0 0L8 8ZM8 0L0 8Z' stroke-width='1' stroke='#1e292d'/>
+	</svg>
+
+	<!-- SVG OUTPUT (BACKGROUND PATTERN) -->
+	<div id="demo">
+
+		<!-- MAIN CONTENT WRAPPER -->
+	<!-- 	<div class="row mainWrapper mWTop" ng-repeat="feature in homepageContent" data-ng-hide="authentication.user.roles.indexOf('user')> -1 || authentication.user.roles.indexOf('admin')> -1 || authentication.user.roles.indexOf('player')> -1 || authentication.user.roles.indexOf('goalie')> -1 || authentication.user.roles.indexOf('parent')> -1 || authentication.user.roles.indexOf('manager')> -1 || authentication.user.roles.indexOf('scout')> -1 || authentication.user.roles.indexOf('fan')> -1">
+
+			<h1>{{feature.mainTitle}}</h1>
+			<h6>{{feature.subTitle}}</h6>
+		
+			<div class="col-md-12">
+				<h4>{{feature.whoWeAreTitle}}</h4>
+				<p>{{feature.whoWeAre}}</p>
+			</div>
+ -->
+			<!-- TOP NAVIGATION Links (internal site links) -->
+			<nav>
+				<div ng-include="'/modules/core/views/partials/topMenuNav.html'"></div>
+			</nav>
+
+		<!-- </div> --><!-- end of c:mainWrapper-->
+
+		<carousel id="carousel" interval="myInterval" data-ng-hide="authentication.user.roles.indexOf('user')> -1 || authentication.user.roles.indexOf('admin')> -1 || authentication.user.roles.indexOf('player')> -1 || authentication.user.roles.indexOf('goalie')> -1 || authentication.user.roles.indexOf('parent')> -1 || authentication.user.roles.indexOf('manager')> -1 || authentication.user.roles.indexOf('scout')> -1 || authentication.user.roles.indexOf('fan')> -1">
+			<slide id="slide" ng-repeat="slide in slides" active="slide.active">
+			<img id="imgSlides" ng-src="{{slide.image}}" style="margin:auto;">
+			<div class="carousel-caption">
+				<h1>{{slide.textHeader}}</h1>
+				<h3>{{slide.textDesc}}</h3>
+			</div>
+			</slide>
+		</carousel>
+
+		<!-- HOMEPAGE MAIN CONTENT AREA-->
+		<div class="row mainWrapper mwMain" ng-repeat="feature in homepageContent">
+			<div class="col-md-12 insideWrap1">
+				<h2>{{feature.howItWorks}}</h2>
+				<div class="col-md-12">
+					<p>{{feature.overview}}</p>
+				</div>
+
+				<div class="col-md-4"></div>
+				<div class="col-md-4"></div>
+				<div class="col-md-4"></div>
+			</div>
+			
+			<div class="col-md-8 insideWrap1">
+				
+				<div class="row" data-ng-hide="authentication.user.roles.indexOf('user')> -1 || authentication.user.roles.indexOf('admin')> -1 || authentication.user.roles.indexOf('player')> -1 || authentication.user.roles.indexOf('goalie')> -1 || authentication.user.roles.indexOf('parent')> -1 || authentication.user.roles.indexOf('manager')> -1 || authentication.user.roles.indexOf('scout')> -1 || authentication.user.roles.indexOf('fan')> -1">
+
+				  <!-- PLAYER -->
+				  <div class="col-md-12" >
+				    <div class="thumbnail" >
+				      <div class="caption">
+				        <h3>Players <small class="pull-right">Get the most out of your career and your coaches.</small></h3>
+				        <h5>Rate Performance, Record Progress, and Track Development</h5>
+						
+						<div ng-repeat="option in playerOptions">
+					        <a href="{{option.aHref}}" class="col-md-2"><img height="64" width="64" src={{option.imgSrc}}><h6>{{option.imgTitle}}</h6></a>
+				      	</div>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+				      </div>	
+				    </div>
+				  </div>
+					
+
+				  <!-- GOALIE -->
+				  <div class="col-md-12" >
+				    <div class="thumbnail" >
+				      <div class="caption">
+				        <h3>Goalies <small class="pull-right">Develop your game intelligently.</small></h3>
+				        <h5>Identify Strengths and Weaknesses.  Know how to Improve. Gain A Mental Edge.</h5>
+						
+						<div ng-repeat="option in playerOptions">
+					        <a href="{{option.aHref}}" class="col-md-2"><img height="64" width="64" src={{option.imgSrc}}><h6>{{option.imgTitle}}</h6></a>
+				      	</div>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+				      </div>	
+				    </div>
+				  </div>
+					
+				  <!-- INSTRUCTION -->	
+				  <div class="col-md-12" >
+				    <div class="thumbnail" >
+				      <div class="caption">
+				        <h3>Coaches <small class="pull-right">Resources and Tools to Make You a Master.</small></h3>
+				        <h5>Provide actionable feedback to players and improve skill development.  Get organized.  Be a great communicator.</h5>
+						
+						<div ng-repeat="option in playerOptions">
+					        <a href="{{option.aHref}}" class="col-md-2"><img height="64" width="64" src={{option.imgSrc}}><h6>{{option.imgTitle}}</h6></a>
+				      	</div>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+				      </div>	
+				    </div>
+				  </div>
+
+
+				</div> <!-- end of row containing "Thumbnail panels" --> 
+
+				<!-- USER -->
+				<section class="row" data-ng-show="authentication.user.roles.indexOf('user')> -1">
+					<div class="col-md-11">
+						<h6><i class="fa fa-database fa-3x"></i> MY USER Options</h6>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+							<h3>Planning, Goals</h3>
+							<h6>Plan Goals to Strive towards, both near term and extended range. Then rate, evaluate, and adjust.</h6>
+							<div class="mainScreenChoice" ng-repeat="choice in playerGoals">
+								<h3><a href="{{choice.url}}"><i class="{{choice.i}}"></i> {{choice.name}}</a></h3>
+								<h5>{{choice.desc}}</h5>
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+							<h3>Evaluations &amp; Ratings</h3>
+							<h6>Evaluate yourself in practice and games. Look back on successes and failures to get better.</h6>
+							<div class="mainScreenChoice" ng-repeat="choice in playerEvals">
+								<h3><a href="{{choice.url}}"><i class="{{choice.i}}"></i> {{choice.name}}</a></h3>
+								<h5>{{choice.desc}}</h5>
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+							<h3>Nutrition</h3>
+							<h6>Record and Track food entries.  Acheive nutritional goals.  Research nutrition. </h6>
+							<div class="mainScreenChoice" ng-repeat="choice in playerFoods">
+								<h3><a href="{{choice.url}}"><i class="{{choice.i}}"></i> {{choice.name}}</a></h3>
+								<h5>{{choice.desc}}</h5>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- PLAYER -->
+				<section class="row" data-ng-show="authentication.user.roles.indexOf('player')> -1">
+					<div class="col-md-11" >
+				
+					</div>
+				</section>
+				<!-- COACH -->
+				<div class="row" data-ng-show="authentication.user.roles.indexOf('coach')> -1">
+					<div class="col-md-11">
+		
+				</div>
+				<!-- GOALIE -->
+				<div class="row" data-ng-show="authentication.user.roles.indexOf('goalie')> -1">
+					<div class="col-md-11">
+		
+					</div>
+				</div>
+				<!-- ADMIN -->
+				<div class="row" data-ng-show="authentication.user.roles.indexOf('admin')> -1">
+					<div class="col-md-11">
+
+					</div>
+				</div>
+		
+			</div> <!-- end of insideWrap1 inside mwMain-->
+			<p><a href="#" class="btn btn-primary" role="button">Read More</a> <a href="#" >View Pricing</a> <small>  Individual and team plans available.</small></p>
+		</div> <!-- end of  MainWrapper mwMain-->
+
+
+		<aside class="col-md-4" data-ng-show="authentication.user.roles.indexOf('player')> -1">
+			<div class="col-md-11 asideWrap1">
+				<h6>Local Instructor 1</h6>
+			</div>
+			<div class="col-md-11 asideWrap1">
+				<h6>Local Instructor 1</h6>
+			</div>
+			<div class="col-md-11 asideWrap1">
+				<h6>Local Instructor 1</h6>
+			</div>
+			<div class="col-md-11 asideWrap1">
+				<h6>Local Instructor 1</h6>
+			</div>
+			<div class="col-md-11 asideWrap1">
+				<h6>Local Instructor 1</h6>
+			</div>
+		</aside>
+		<aside class="col-md-4" data-ng-hide="authentication.user.roles.indexOf('user')> -1 || authentication.user.roles.indexOf('admin')> -1 || authentication.user.roles.indexOf('player')> -1 || authentication.user.roles.indexOf('goalie')> -1 || authentication.user.roles.indexOf('parent')> -1 || authentication.user.roles.indexOf('manager')> -1 || authentication.user.roles.indexOf('scout')> -1 || authentication.user.roles.indexOf('fan')> -1">
+			<div class="col-md-12 asideWrap1">
+				<h5>COMMUNICATION</h5>
+			</div>
+		</aside>
+		<aside class="col-md-4" data-ng-hide="authentication.user.roles.indexOf('user')> -1 || authentication.user.roles.indexOf('admin')> -1 || authentication.user.roles.indexOf('player')> -1 || authentication.user.roles.indexOf('goalie')> -1 || authentication.user.roles.indexOf('parent')> -1 || authentication.user.roles.indexOf('manager')> -1 || authentication.user.roles.indexOf('scout')> -1 || authentication.user.roles.indexOf('fan')> -1">
+			<div class="col-md-12 asideWrap1">
+				<h6>PLAYER DEVELOPMENT</h6>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nis.</p>
+				<h6>TEAM MANAGEMENT &AMP; COMMUNICATION</h6>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nis.</p>
+				<h6>COACHING EVALUATIONS &AMP; FEEDBACK</h6>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nis.</p>
+				<h6>NUTRITION</h6>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nis.</p>
+			</div>
+		</aside>
+		
+		<div class="row mainWrapper mwMain">
+			<div class="col-md-4 insideWrap1">
+				<img src="http://placehold.it/350x150">
+			</div>
+			<div class="col-md-4">
+				
+			</div>
+			<div class="col-md-4 insideWrap1">
+				<img src="http://placehold.it/350x150">
+			</div>
+		</div>
+		<div class="col-md-12">
+			<i class="fa fa-envelope fa-2x"></i>
+			<i class="fa fa-facebook fa-2x"></i>
+			<i class="fa fa-twitter fa-2x"></i> 
+		</div>
+
+	</div><!-- end of id:demo-->
+</div><!-- end of HomeController-->

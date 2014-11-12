@@ -1,0 +1,52 @@
+<section data-ng-controller="GoalieGameSelfEvalsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Goalie game self evals</h1>
+    </div>
+    <div class="list-group col-md-4">
+        <a data-ng-repeat="goalieGameSelfEval in goalieGameSelfEvals" data-ng-href="#!/goalie-game-self-evals/{{goalieGameSelfEval._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Evaluation recorded
+				<span data-ng-bind="goalieGameSelfEval.created | date:'short'"></span>
+				by
+				<span data-ng-bind="goalieGameSelfEval.user.displayName"></span>
+			</small>
+			<!-- <h4 class="list-group-item-heading" data-ng-bind="goalieGameSelfEval.name"></h4> -->
+            <h4 class="list-group-item-text" data-ng-bind="goalieGameSelfEval.opponent"></h4>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.location"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.when"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.winloss"></p>
+            <h5 class="text-muted">Rating:</h5>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.myrating"></p>
+            <h5 class="text-muted">Goals Allowed:</h5>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.gaa"></p>
+            <h5 class="text-muted">Shots:</h5>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.shots"></p>
+            <!-- <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga1"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga1rating"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga1fix"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga2"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga2rating"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.gafix"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga3"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga3rating"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga3fix"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga4"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga4rating"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga4fix"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga5"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga5rating"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga5fix"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga6"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga6rating"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.gafix"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga7"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga7rating"></p>
+            <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga7fix"></p> -->
+
+
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!goalieGameSelfEvals.$resolved || goalieGameSelfEvals.length">
+    	No Self evaluations have been recorded yet, why don't you <a href="/#!/goalie-game-self-evals/create">create one</a>?
+    </div>
+</section>

@@ -1,0 +1,52 @@
+<section data-ng-controller="GoalieGameSelfEvalsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="goalieGameSelfEval.name"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="authentication.user._id == goalieGameSelfEval.user._id">
+		<a class="btn btn-primary" href="/#!/goalie-game-self-evals/{{goalieGameSelfEval._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<small>
+		<em class="text-muted">
+			Posted on
+			<span data-ng-bind="goalieGameSelfEval.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="goalieGameSelfEval.user.displayName"></span>
+		</em>
+	</small>
+
+	<p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.opponent"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.location"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.when"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.winloss"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.myrating"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.gaa"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.shots"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga1"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga1rating"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga1fix"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga2"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga2rating"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.gafix"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga3"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga3rating"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga3fix"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga4"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga4rating"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga4fix"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga5"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga5rating"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga5fix"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga6"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga6rating"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.gafix"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga7"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga7rating"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.ga7fix"></p>
+    <p class="list-group-item-text" data-ng-bind="goalieGameSelfEval.toworkon"></p>
+
+</section>
